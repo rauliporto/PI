@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenerateNPC : MonoBehaviour
+public class Generate_NPC : MonoBehaviour
 {
     public GameObject objectNPC;
     public int xPos;
@@ -14,7 +14,7 @@ public class GenerateNPC : MonoBehaviour
         npcCounter = 0;
         while(npcCounter < 10)
         {
-            Instantiate(objectNPC, new Vector3(xPos, 1.0F, zPos), Quaternion.identity);
+            Instantiate(objectNPC, new Vector3(xPos, 2.0F,zPos) , Quaternion.identity);
             
             npcCounter++;
         }
