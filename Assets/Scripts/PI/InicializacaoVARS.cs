@@ -10,8 +10,6 @@ public class InicializacaoVARS : MonoBehaviour
     public static int numeroEnfermeiros;
     public static int numeroMedicos;
     public static int numeroRececionistas;
-    public static int xPos;
-    public static int zPos;
     private static System.Timers.Timer temporizador;
 
     // Start is called before the first frame update
@@ -24,8 +22,7 @@ public class InicializacaoVARS : MonoBehaviour
         numeroRececionistas = 2;
         numeroMedicos = 2;
         // posição de spawn dos pacientes
-        xPos = -21;
-        zPos = -61;
+
         // Temporizador com intervalos de 1 segundo
    
         
