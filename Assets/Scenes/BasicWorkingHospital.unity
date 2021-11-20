@@ -2464,7 +2464,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectEnfermeiras: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065,
     type: 3}
-  numeroEnfermeiras: 2
 --- !u!1 &915505969
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,7 +2509,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectMedicos: {fileID: 2618188073631541129, guid: 05fbded8ac9e97445969c7c71b052f61,
     type: 3}
-  numeroMedicos: 3
 --- !u!1001 &916757892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3360,9 +3358,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectNPC: {fileID: 8081455519589191888, guid: bfc0516a74c0f384aabf64eb4e833e11,
     type: 3}
-  xPos: -13
-  zPos: -34
   npcCounter: 0
+  x: 0
+  z: 0
 --- !u!1 &1184113935
 GameObject:
   m_ObjectHideFlags: 0
@@ -3624,6 +3622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1272829535}
+  - component: {fileID: 1272829537}
   m_Layer: 0
   m_Name: Environment
   m_TagString: Untagged
@@ -3655,6 +3654,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1272829537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272829534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3bb0a8e1b1adb149b79db8fd66a0188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1276464609 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4385152143542856, guid: 8bbe4b9ca22bd3c40a6dbdfb22688306,
@@ -4549,7 +4560,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1464772320}
-  - component: {fileID: 1464772319}
   m_Layer: 0
   m_Name: AndroidBuild
   m_TagString: Untagged
@@ -4557,18 +4567,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1464772319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464772318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b213f58e20bea26468cca715e2065e68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1464772320
 Transform:
   m_ObjectHideFlags: 0
@@ -6040,7 +6038,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectRececionista: {fileID: 8081350860244042457, guid: e4500ae34ee299541a848fe507b7cadf,
     type: 3}
-  numeroRecionistas: 2
 --- !u!4 &1813977205
 Transform:
   m_ObjectHideFlags: 0
