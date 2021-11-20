@@ -8,16 +8,16 @@ public class Generate_NPC : MonoBehaviour
 {
     public GameObject objectNPC;
     public int npcCounter;
-    public int x;
-    public int z;
+    public int xPos;
+    public int zPos;
     public float temporizador;
     int mu;
 
     // Start is called before the first frame update
     void Start()
     {
-        x = InicializacaoVARS.xPos;
-        z = InicializacaoVARS.zPos;
+        xPos = -21;
+        zPos = -61;
         npcCounter = 0;
         mu = 10;
         // Temporizador será igual ao mu 
@@ -38,7 +38,7 @@ public class Generate_NPC : MonoBehaviour
            int nNPC = poisson(1.0);
            while (nNPC > 0)
             {
-                InicializacaoVARS.filaEntrada.Add(Instantiate(objectNPC, new Vector3(x, 2.0F, z), Quaternion.identity));
+                InicializacaoVARS.filaEntrada.Add(Instantiate(objectNPC, new Vector3(xPos, 2.0F, zPos), Quaternion.identity));
                  nNPC -= 1;
             }
 
