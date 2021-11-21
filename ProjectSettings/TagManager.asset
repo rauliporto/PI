@@ -13,6 +13,9 @@ TagManager:
   - PatientSpawner
   - Reception2
   - Triagem
+  - WaitingArea2
+  - TriageRoom
+  - TriageRoom2
   layers:
   - Default
   - TransparentFX
