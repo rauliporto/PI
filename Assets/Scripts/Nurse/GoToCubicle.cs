@@ -15,7 +15,7 @@ namespace Nurse
 
         public override bool PostPerform()
         {
-            GWorld.Instance.GetWorld().ModifyState("TreatingPatient", 1);
+            GWorld.Instance.GetWorld().ModifyState("PrioritizePatient", 1);
             GWorld.Instance.AddCubicle(target);
             inventory.RemoveItem(target);
             GWorld.Instance.GetWorld().ModifyState("FreeCubicle", 1);

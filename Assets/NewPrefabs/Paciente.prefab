@@ -2426,6 +2426,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8077206386891955524}
   - component: {fileID: 2109607869010371318}
+  - component: {fileID: 4452639977428020674}
+  - component: {fileID: 4314410148436424144}
+  - component: {fileID: 8453734148469268467}
+  - component: {fileID: 6331857570423502867}
+  - component: {fileID: 305855398755328367}
   m_Layer: 0
   m_Name: Paciente
   m_TagString: Untagged
@@ -2471,6 +2476,122 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4452639977428020674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081455519589191888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed06c69c55ff0a49af1ef715ac28ebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions: []
+  currentAction: {fileID: 0}
+--- !u!114 &4314410148436424144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081455519589191888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5218dc40f7d5b4b9af81717740cf07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Go to Hospital
+  cost: 1
+  target: {fileID: 0}
+  targetTag: Door
+  duration: 0
+  preConditions:
+  - key: FreeReception
+    value: 0
+  afterEffects:
+  - key: hasArrived
+    value: 1
+  agent: {fileID: 0}
+  running: 0
+--- !u!114 &8453734148469268467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081455519589191888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26edc1596c46ec44f81a815c89b49903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Go To Reception
+  cost: 1
+  target: {fileID: 0}
+  targetTag: Reception
+  duration: 30
+  preConditions:
+  - key: FreeReception
+    value: 1
+  - key: hasArrived
+    value: 1
+  afterEffects:
+  - key: hasRegistered
+    value: 1
+  agent: {fileID: 0}
+  running: 0
+--- !u!114 &6331857570423502867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081455519589191888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 040e2f981f7a08d4f974de9ad816b390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Go To Triage Waiting Room
+  cost: 1
+  target: {fileID: 0}
+  targetTag: TriageWaitingArea
+  duration: 0
+  preConditions:
+  - key: hasRegistered
+    value: 1
+  afterEffects:
+  - key: isWaiting
+    value: 1
+  agent: {fileID: 0}
+  running: 0
+--- !u!114 &305855398755328367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081455519589191888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a7bf53acc6b82a44956acc816b26a2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: GetTriageCategorization
+  cost: 1
+  target: {fileID: 0}
+  targetTag: WaitingArea
+  duration: 3
+  preConditions:
+  - key: atHospital
+    value: 1
+  afterEffects:
+  - key: hasPrioritization
+    value: 1
+  agent: {fileID: 0}
+  running: 0
 --- !u!1 &8306298314852119931
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,11 +9,14 @@ namespace GOAP
         private static WorldStates world;
         private static Queue<GameObject> patients;
         private static Queue<GameObject> cubicles;
+        private static Queue<GameObject> receptions;
+
         static GWorld()
         {
             world = new WorldStates();
             patients = new Queue<GameObject>();
             cubicles = new Queue<GameObject>();
+            receptions = new Queue<GameObject>();
 
             GameObject[] cubes = GameObject.FindGameObjectsWithTag("Cubicle");
             foreach (GameObject c in cubes)
@@ -22,11 +25,17 @@ namespace GOAP
             if (cubes.Length > 0)
                 world.ModifyState("FreeCubicle", cubes.Length);
 
+
+            GameObject[] rcp = GameObject.FindGameObjectsWithTag("Reception");
+            foreach (GameObject r in rcp)
+                receptions.Enqueue(r);
+
+            if (rcp.Length > 0)
+                world.ModifyState("FreeReception", rcp.Length);
+
         }
 
-        private GWorld()
-        {
-        }
+        private GWorld() {}
 
         public void AddPatient(GameObject p)
         {
@@ -51,6 +60,19 @@ namespace GOAP
                 return null;
             else
                 return cubicles.Dequeue();
+        }
+
+        public void AddReception(GameObject p)
+        {
+            receptions.Enqueue(p);
+        }
+
+        public GameObject RemoveReception()
+        {
+            if (receptions.Count == 0)
+                return null;
+            else
+                return receptions.Dequeue();
         }
 
         public static GWorld Instance

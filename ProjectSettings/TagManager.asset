@@ -11,6 +11,8 @@ TagManager:
   - Cubicle
   - Reception
   - PatientSpawner
+  - TriageWaitingArea
+  - ReceptionDesk1
   layers:
   - Default
   - TransparentFX
