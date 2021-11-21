@@ -7,13 +7,16 @@ public class movimentoPaciente : MonoBehaviour
     public string pos;
     public bool canIMove;
     public bool called;
+    public bool sorted;
     
     // Start is called before the first frame update
     void Start()
     {
-        canIMove = true;
         pos = "Door";
+
+        canIMove = true;
         called = false;
+        sorted = true;
     }
 
     // Update is called once per frame
@@ -32,7 +35,6 @@ public class movimentoPaciente : MonoBehaviour
            GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             called = true;
             canIMove = false;
-
         }           
     }
 
@@ -46,11 +48,15 @@ public class movimentoPaciente : MonoBehaviour
     {
         GameObject[] aux = new GameObject[1];
         aux = GameObject.FindGameObjectsWithTag(pos);
-        print(pos);
         return aux[0];
     }
-    public bool getCalled(){
+
+    public bool getCalled() {
         return called;
+    }
+
+    public bool isSorted() {
+        return sorted;
     }
 
     public bool nearPosition()

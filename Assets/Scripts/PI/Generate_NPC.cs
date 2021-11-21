@@ -35,7 +35,7 @@ public class Generate_NPC : MonoBehaviour
     else
         {
             System.Console.WriteLine(" A Criar");
-           int nNPC = poisson(1.0);
+           int nNPC = poisson(1.0f);
            while (nNPC > 0)
             {
                 InicializacaoVARS.filaEntrada.Enqueue(Instantiate(objectNPC, new Vector3(xPos, 2.0F, zPos), Quaternion.identity));
@@ -46,27 +46,22 @@ public class Generate_NPC : MonoBehaviour
 
             temporizador = mu;
             System.Console.WriteLine(" reset temporizador");
-        }
-        
-      
+        }      
     }
 
-    public int poisson(double mu)
+    public int poisson(float mu)
     {
-        if (mu > 0)
-        {
-            // é preciso criar o random entre 0.0 e 1.0
-            double a = 0.5;
-            //-------------------------------------------------
+        if (mu <= 0) return 0;
+        
+        // é preciso criar o random entre 0.0 e 1.0
+        //float a = UnityEngine.Random.Range(0.0f, 1.0f);
+        float a = 0.5f;
+        //-------------------------------------------------
+        float b = 1.0f;
+        int i;
+        for (i = 0; b >= Math.Exp(-mu); i++)
+            b = b * a;
 
-            double b = 1.0;
-            int i;
-            for (i = 0; b >= Math.Exp(-mu); i++)
-                b = b * a;
        return i - 1;
-        }
-        return 0;
     }
-
-
 }
