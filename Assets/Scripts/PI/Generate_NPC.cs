@@ -18,10 +18,10 @@ public class Generate_NPC : MonoBehaviour
     {
         xPos = -21;
         zPos = -61;
-        npcCounter = 0;
         mu = 10;
         // Temporizador será igual ao mu 
        temporizador = mu;
+       print("teste");
     }
 
     void Update()
@@ -38,7 +38,9 @@ public class Generate_NPC : MonoBehaviour
            int nNPC = poisson(1.0);
            while (nNPC > 0)
             {
-                InicializacaoVARS.filaEntrada.Add(Instantiate(objectNPC, new Vector3(xPos, 2.0F, zPos), Quaternion.identity));
+                InicializacaoVARS.filaEntrada.Enqueue(Instantiate(objectNPC, new Vector3(xPos, 2.0F, zPos), Quaternion.identity));
+                print(InicializacaoVARS.filaEntrada.Count);
+                
                  nNPC -= 1;
             }
 

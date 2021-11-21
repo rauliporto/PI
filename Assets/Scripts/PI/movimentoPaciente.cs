@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class movimentoPaciente : MonoBehaviour
 {
-    public int pos;
+    public string pos;
     public bool canIMove;
+    public bool called;
     
     // Start is called before the first frame update
     void Start()
     {
         canIMove = true;
-        pos = 1;
+        pos = "Door";
+        called = false;
     }
 
     // Update is called once per frame
@@ -19,44 +21,44 @@ public class movimentoPaciente : MonoBehaviour
     {
         if(canIMove)
         {
-            transform.position = Vector3.MoveTowards(transform.position, getVector(), 2.0F * Time.deltaTime);
+            GameObject aux = getVector();
+            transform.position = Vector3.MoveTowards(transform.position, aux.transform.position, 2.0F * Time.deltaTime);
+            called = false;
         }
 
         if (nearPosition())
         {
            GetComponent<Rigidbody>().velocity = Vector3.zero;
-            GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+           GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            called = true;
+            canIMove = false;
 
-        }
-
-
-            
+        }           
     }
 
-    public void moveTo(int pos)
+    public void moveTo(string pos)
     {
         this.pos = pos;
         canIMove = true;
     }
 
-    public Vector3 getVector()
+    public GameObject getVector()
     {
-        if (pos == 1)
-            return InicializacaoVARS.entrada;
-        if (pos == 2)
-            return InicializacaoVARS.rece1;
-        if (pos == 3)
-            return InicializacaoVARS.rece2;
-        else 
-            return InicializacaoVARS.entrada;
+        GameObject[] aux = new GameObject[1];
+        aux = GameObject.FindGameObjectsWithTag(pos);
+        print(pos);
+        return aux[0];
+    }
+    public bool getCalled(){
+        return called;
     }
 
     public bool nearPosition()
     {
-        if (Vector3.Distance(transform.position, getVector()) < 0.001f)
+        GameObject aux = getVector();
+        if (Vector3.Distance(transform.position, aux.transform.position) < 0.001f)
             return true;
         return false;
-
     }
 
 }

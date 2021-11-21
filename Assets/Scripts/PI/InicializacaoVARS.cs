@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class InicializacaoVARS : MonoBehaviour
 {
-    public static List<GameObject> filaEntrada;
-    public static List<GameObject> filaTriagem;
-    public static List<GameObject> filaMedico;
+    public static Queue<GameObject> filaEntrada;
+    public static Queue<GameObject> filaTriagem;
+    public static Queue<GameObject> filaMedico;
     public static int numeroEnfermeiros;
     public static int numeroMedicos;
     public static int numeroRececionistas;
@@ -16,15 +16,15 @@ public class InicializacaoVARS : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        filaMedico = new List<GameObject>();
-        filaTriagem = new List<GameObject>();
-        filaEntrada = new List<GameObject>();
+        filaMedico = new Queue<GameObject>();
+        filaTriagem = new Queue<GameObject>();
+        filaEntrada = new Queue<GameObject>();
         numeroEnfermeiros = 2;
         numeroRececionistas = 2;
         numeroMedicos = 2;
 
 
-        // posição de spawn dos pacientes
+        // posiï¿½ï¿½o de spawn dos pacientes
 
         entrada = new Vector3(0F, 1.55F,0F);
         rece1 = new Vector3(-11F, 1.55F, -17F);
@@ -42,5 +42,5 @@ public class InicializacaoVARS : MonoBehaviour
     void Update()
     {
         
-    }
+}
 }
