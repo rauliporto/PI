@@ -12,6 +12,7 @@ public class geradorRececionistas : MonoBehaviour
     {
         GameObject rececionista1;
         GameObject rececionista2;
+
         if (InicializacaoVARS.numeroRececionistas > 0)
         {
             rececionista1 = Instantiate(objectRececionista, new Vector3(-24.70F, 1.55F, -8.6F), Quaternion.identity);

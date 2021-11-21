@@ -27,6 +27,7 @@ public class movimentoPaciente : MonoBehaviour
             GameObject aux = getVector();
             transform.position = Vector3.MoveTowards(transform.position, aux.transform.position, 2.0F * Time.deltaTime);
             called = false;
+            sorted = false;
         }
 
         if (nearPosition())
@@ -34,6 +35,7 @@ public class movimentoPaciente : MonoBehaviour
            GetComponent<Rigidbody>().velocity = Vector3.zero;
            GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             called = true;
+            sorted = true; //to fix
             canIMove = false;
         }           
     }
@@ -48,6 +50,7 @@ public class movimentoPaciente : MonoBehaviour
     {
         GameObject[] aux = new GameObject[1];
         aux = GameObject.FindGameObjectsWithTag(pos);
+        print(pos);
         return aux[0];
     }
 
