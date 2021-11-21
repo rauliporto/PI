@@ -2426,7 +2426,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8077206386891955524}
   - component: {fileID: 2109607869010371318}
-  - component: {fileID: 6279673367353363660}
+  - component: {fileID: 1868699594693078982}
+  - component: {fileID: 7489038860775477327}
+  - component: {fileID: 1959990195800971888}
   m_Layer: 0
   m_Name: Paciente
   m_TagString: Untagged
@@ -2472,7 +2474,21 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!54 &6279673367353363660
+--- !u!114 &1868699594693078982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081455519589191888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c293bcf4fa2b68458cc6bc95daafbb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pos: 0
+  canIMove: 0
+--- !u!54 &7489038860775477327
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2486,8 +2502,21 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!65 &1959990195800971888
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8081455519589191888}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8306298314852119931
 GameObject:
   m_ObjectHideFlags: 0

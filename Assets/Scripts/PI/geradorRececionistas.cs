@@ -5,7 +5,7 @@ using UnityEngine;
 public class geradorRececionistas : MonoBehaviour
 {
     public GameObject objectRececionista;
-   
+    public int gabinete;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,11 +14,15 @@ public class geradorRececionistas : MonoBehaviour
         if (InicializacaoVARS.numeroRececionistas > 0)
         {
             rececionista1 = Instantiate(objectRececionista, new Vector3(-24.70F, 1.55F, -8.6F), Quaternion.identity);
+            gabinete = 1;
+            rececionista1.gabinete = 1;
                     }
         if (InicializacaoVARS.numeroRececionistas > 1)
         {
             rececionista2 = Instantiate(objectRececionista, new Vector3(-17.9F, 1.55F, -8.6F), Quaternion.identity);
-                    }
+            gabinete = 2;
+            rececionista2.gabinete = 1;
+        }
     }
 
     // Update is called once per frame

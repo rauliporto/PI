@@ -11,6 +11,7 @@ public class InicializacaoVARS : MonoBehaviour
     public static int numeroMedicos;
     public static int numeroRececionistas;
     private static System.Timers.Timer temporizador;
+    public static Vector3 entrada,rece1,rece2;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +22,16 @@ public class InicializacaoVARS : MonoBehaviour
         numeroEnfermeiros = 2;
         numeroRececionistas = 2;
         numeroMedicos = 2;
+
+
         // posição de spawn dos pacientes
 
+        entrada = new Vector3(0F, 1.55F,0F);
+        rece1 = new Vector3(-11F, 1.55F, -17F);
+        rece2 = new Vector3(-4F, 1.55F, -17F);
         // Temporizador com intervalos de 1 segundo
-   
-        
+
+
 
 
 

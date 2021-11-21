@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class movimentoPaciente : MonoBehaviour
+{
+    public int pos;
+    public bool canIMove;
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        canIMove = true;
+        pos = 1;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(canIMove &&  pos == 1)
+        {
+
+            float step = 1.0F * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, Entrada.transform.position, step);
+
+        }
+
+            
+    }
+
+    public void moveTo(int pos)
+    {
+        this.pos = pos;
+        canIMove = true;
+    }
+}
