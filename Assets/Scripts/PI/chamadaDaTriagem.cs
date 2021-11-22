@@ -30,9 +30,13 @@ public class chamadaDaTriagem : MonoBehaviour
                 pacienteAtual = null;
             }
 
-            if (InicializacaoVARS.filaTriagem.Count > 0 && InicializacaoVARS.filaTriagem.Peek().GetComponent<movimentoPaciente>().isSorted()) {
+            if (InicializacaoVARS.filaTriagem.Count > 0 && InicializacaoVARS.filaTriagem.Peek().GetComponent<movimentoPaciente>().isWaiting()) {
+                InicializacaoVARS.filaTriagem.Peek().GetComponent<movimentoPaciente>().moveTo("Hall");
+            }
+
+            if (InicializacaoVARS.filaTriagem.Count > 0 && InicializacaoVARS.filaTriagem.Peek().GetComponent<movimentoPaciente>().isCalledTriage()) {
                 pacienteAtual  = InicializacaoVARS.filaTriagem.Dequeue();
-                pacienteAtual.GetComponent<movimentoPaciente>().moveTo((string) gameObject.tag);
+                pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                 temporizador = exponential();
             }
         }

@@ -16,6 +16,7 @@ TagManager:
   - WaitingArea2
   - TriageRoom
   - TriageRoom2
+  - Hall
   layers:
   - Default
   - TransparentFX

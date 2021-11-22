@@ -6,17 +6,13 @@ public class movimentoPaciente : MonoBehaviour
 {
     public string pos;
     public bool canIMove;
-    public bool called;
-    public bool sorted;
-    
+    public int status; //1 - called; 2 - waiting; 3 - calledTriage
+
     // Start is called before the first frame update
     void Start()
     {
         pos = "Door";
-
         canIMove = true;
-        called = false;
-        sorted = true;
     }
 
     // Update is called once per frame
@@ -26,16 +22,21 @@ public class movimentoPaciente : MonoBehaviour
         {
             GameObject aux = getVector();
             transform.position = Vector3.MoveTowards(transform.position, aux.transform.position, 2.0F * Time.deltaTime);
-            called = false;
-            sorted = false;
+            status = 0;
         }
 
         if (nearPosition())
         {
-           GetComponent<Rigidbody>().velocity = Vector3.zero;
-           GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            called = true;
-            sorted = true; //to fix
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
+            if (pos == "Door")
+                status = 1;
+            else if (pos == "WaitingArea") 
+                status = 2; 
+            else if (pos == "Hall") 
+                status = 3; 
+
             canIMove = false;
         }           
     }
@@ -55,11 +56,15 @@ public class movimentoPaciente : MonoBehaviour
     }
 
     public bool getCalled() {
-        return called;
+        return status == 1;
     }
 
-    public bool isSorted() {
-        return sorted;
+    public bool isWaiting() {
+        return status == 2;
+    }
+
+    public bool isCalledTriage() {
+        return status == 3;
     }
 
     public bool nearPosition()
