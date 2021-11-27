@@ -13,24 +13,23 @@ public class geradorMedicos : MonoBehaviour
         GameObject medico2;
         GameObject medico3;
         print(InicializacaoVARS.numeroMedicos);
-        if (InicializacaoVARS.numeroMedicos > 0)
-        {
+        //if (InicializacaoVARS.numeroMedicos > 0)
+        //{
             medico1 = Instantiate(objectMedicos, new Vector3(-53F, 1.55F, 35F), Quaternion.identity);
             medico1.transform.rotation = Quaternion.Euler(0, 180, 0);
             medico1.gameObject.tag = "Gabinete1";
-        }
-        if (InicializacaoVARS.numeroMedicos > 1)
-        {
+        //}
+        //if (InicializacaoVARS.numeroMedicos > 1)
+        //{
             medico2 = Instantiate(objectMedicos, new Vector3(-53F, 1.55F, 58F), Quaternion.identity);
             medico2.transform.rotation = Quaternion.Euler(0, 180, 0);
             medico2.gameObject.tag = "Gabinete2";
-        }
-            if (InicializacaoVARS.numeroMedicos > 2)
-            {
-                medico3 = Instantiate(objectMedicos, new Vector3(10F, 1.55F, 58F), Quaternion.identity);
+        //}
+        //if (InicializacaoVARS.numeroMedicos > 2) {
+            medico3 = Instantiate(objectMedicos, new Vector3(10F, 1.55F, 58F), Quaternion.identity);
             medico3.transform.rotation = Quaternion.Euler(0, 180, 0);
             medico3.gameObject.tag = "Gabinete3";
-        }
+        //}
     }
 
     // Update is called once per frame

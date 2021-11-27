@@ -48,8 +48,8 @@ public class movimentoPaciente : MonoBehaviour
     {
         GameObject[] aux = new GameObject[1];
         aux = GameObject.FindGameObjectsWithTag(pos);
-        if(pos != "Door" )
-        print(pos);
+        //if(pos != "Door" )
+        //print(pos);
         return aux[0];
     }
 
@@ -60,7 +60,8 @@ public class movimentoPaciente : MonoBehaviour
     public bool nearPosition()
     {
         GameObject aux = getVector();
-        if (Vector3.Distance(transform.position, aux.transform.position) < 1F)
+        print(Vector3.Distance(transform.position, aux.transform.position));
+        if (Vector3.Distance(transform.position, aux.transform.position) < 2f)
             return true;
         return false;
     }

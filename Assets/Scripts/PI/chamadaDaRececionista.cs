@@ -16,45 +16,42 @@ public class chamadaDaRececionista : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
-            if(pacienteAtual != null && pacienteAtual.GetComponent<movimentoPaciente>().nearPosition()) {
-                if (temporizador > 0 ) {
-                    temporizador -= Time.deltaTime;
-                }
-                else{
-                    insertTriagem();
-                    pacienteAtual = null;
+    { 
+
+        if(pacienteAtual != null && pacienteAtual.GetComponent<movimentoPaciente>().nearPosition()) {
+            if (temporizador > 0 ) {
+                temporizador -= Time.deltaTime;
+            }
+            else {
+                insertTriagem();
+                pacienteAtual = null;
+            }
+        }
+        else {
+            if(pacienteAtual == null){
+                if(canICall()) {
+                    callPacient();
+                    temporizador = 10;
                 }
             }
-            else{
-                if(pacienteAtual == null){
-                    if(canICall()){
-                        callPacient();
-                        temporizador = 10;
-                    }
-                }
 
-            }
+        }
     }
-    public void insertTriagem(){
-         pacienteAtual.GetComponent<movimentoPaciente>().moveTo("WaitingArea");
-                    InicializacaoVARS.filaTriagem.Enqueue(pacienteAtual);    
+    
+    public void insertTriagem() {
+        pacienteAtual.GetComponent<movimentoPaciente>().moveTo("WaitingArea");
+        InicializacaoVARS.filaTriagem.Enqueue(pacienteAtual);    
     }
 
-    public void callPacient(){
-                pacienteAtual  = InicializacaoVARS.filaEntrada.Dequeue();
-                pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
+    public void callPacient() {
+        pacienteAtual  = InicializacaoVARS.filaEntrada.Dequeue();
+        pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
     }
 
-    public bool canICall(){
-
+    public bool canICall() {
         if (InicializacaoVARS.filaEntrada.Count > 0 && InicializacaoVARS.filaEntrada.Peek().GetComponent<movimentoPaciente>().getCalled())
-        return true;
+            return true;
         return false;
     }
-
-
-
     
 }
