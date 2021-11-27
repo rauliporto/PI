@@ -22,19 +22,6 @@ public class InicializacaoVARS : MonoBehaviour
         numeroEnfermeiros = 2;
         numeroRececionistas = 2;
         numeroMedicos = 2;
-
-
-        // posi��o de spawn dos pacientes
-
-        entrada = new Vector3(0F, 1.55F,0F);
-        rece1 = new Vector3(-11F, 1.55F, -17F);
-        rece2 = new Vector3(-4F, 1.55F, -17F);
-        // Temporizador com intervalos de 1 segundo
-
-
-
-
-
     }
 
 

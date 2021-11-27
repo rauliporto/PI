@@ -23,21 +23,19 @@ public class chamadaDaTriagem : MonoBehaviour
         if (temporizador > 0) {
             temporizador -= Time.deltaTime;
         }
-        else 
+        else
         { 
             if(pacienteAtual != null) {
                 pacienteAtual.GetComponent<movimentoPaciente>().moveTo("WaitingArea2");
+                InicializacaoVARS.filaMedico.Enqueue(pacienteAtual);    
                 pacienteAtual = null;
+
             }
 
-            if (InicializacaoVARS.filaTriagem.Count > 0 && InicializacaoVARS.filaTriagem.Peek().GetComponent<movimentoPaciente>().isWaiting()) {
-                InicializacaoVARS.filaTriagem.Peek().GetComponent<movimentoPaciente>().moveTo("Hall");
-            }
-
-            if (InicializacaoVARS.filaTriagem.Count > 0 && InicializacaoVARS.filaTriagem.Peek().GetComponent<movimentoPaciente>().isCalledTriage()) {
+            if (InicializacaoVARS.filaTriagem.Count > 0 && InicializacaoVARS.filaTriagem.Peek().GetComponent<movimentoPaciente>().getCalled()) {
                 pacienteAtual  = InicializacaoVARS.filaTriagem.Dequeue();
                 pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
-                temporizador = exponential();
+                temporizador = exponential() *10;
             }
         }
     }

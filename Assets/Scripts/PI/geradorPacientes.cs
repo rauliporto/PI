@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.Timers;
 
-public class Generate_NPC : MonoBehaviour
+public class geradorPacientes : MonoBehaviour
 {
     public GameObject objectNPC;
     public int npcCounter;
@@ -12,6 +12,7 @@ public class Generate_NPC : MonoBehaviour
     public int zPos;
     public float temporizador;
     int mu;
+    private int senha;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,8 @@ public class Generate_NPC : MonoBehaviour
         // Temporizador será igual ao mu 
        temporizador = mu;
        print("teste");
+    senha=1;
+      
     }
 
     void Update()
@@ -38,10 +41,13 @@ public class Generate_NPC : MonoBehaviour
            int nNPC = poisson(1.0f);
            while (nNPC > 0)
             {
-                InicializacaoVARS.filaEntrada.Enqueue(Instantiate(objectNPC, new Vector3(xPos, 2.0F, zPos), Quaternion.identity));
-                print(InicializacaoVARS.filaEntrada.Count);
                 
-                 nNPC -= 1;
+                GameObject gerado = Instantiate(objectNPC, new Vector3(xPos, 2.0F, zPos), Quaternion.identity);
+                InicializacaoVARS.filaEntrada.Enqueue(gerado);
+                gerado.GetComponent<informacaoPaciente>().setSenha(senha);
+                senha++;
+                print(InicializacaoVARS.filaEntrada.Count);
+                nNPC--;
             }
 
             temporizador = mu;

@@ -17,6 +17,10 @@ TagManager:
   - TriageRoom
   - TriageRoom2
   - Hall
+  - WaitingAreaMedic
+  - Gabinete1
+  - Gabinete2
+  - Gabinete3
   layers:
   - Default
   - TransparentFX
