@@ -11,57 +11,61 @@ public class geradorPacientes : MonoBehaviour
     public int xPos;
     public int zPos;
     public float temporizador;
+    public float temporizador2;
     int mu;
     private int senha;
+    private int nNPC;
+    private int criados;
+    private int calculados;
 
     // Start is called before the first frame update
     void Start()
     {
         xPos = -21;
         zPos = -61;
-        mu = 10;
+        mu = 5;
         // Temporizador será igual ao mu 
-       temporizador = mu;
-       print("teste");
-    senha=1;
-      
+        temporizador = 0;
+        temporizador2 = 0;
+        senha=1;
+        criados=0;
+        calculados=0;
     }
 
     void Update()
     {
         // Criar um timer para depois fazer a call da função poisson e ver quantos pacientes temos de criar e atribuir à lista de receção
-        if (temporizador > 0)
-        {
+
+        if (temporizador > 0) {
             temporizador -= Time.deltaTime;
-            System.Console.WriteLine(" A aguardar");
         }
-    else
-        {
-            System.Console.WriteLine(" A Criar");
-           int nNPC = poisson(1.0f);
-           while (nNPC > 0)
-            {
-                
+        else {
+            if(criados < calculados){
+                print("criados: " + criados);
                 GameObject gerado = Instantiate(objectNPC, new Vector3(xPos, 2.0F, zPos), Quaternion.identity);
                 InicializacaoVARS.filaEntrada.Enqueue(gerado);
                 gerado.GetComponent<informacaoPaciente>().setSenha(senha);
                 senha++;
                 print(InicializacaoVARS.filaEntrada.Count);
-                nNPC--;
+                criados++;
+
             }
-
-            temporizador = mu;
-            System.Console.WriteLine(" reset temporizador");
-        }      
+            else {
+                calculados = poisson();
+                criados = 0;
+                print("temporizador: " + temporizador + "calculados:" + calculados + "criados:" + criados);
+           }
+            temporizador = calculados > 0 ? 60/calculados : 60;
+        }
     }
-
-    public int poisson(float mu)
+    
+    public int poisson()
     {
         if (mu <= 0) return 0;
         
         // é preciso criar o random entre 0.0 e 1.0
-        //float a = UnityEngine.Random.Range(0.0f, 1.0f);
-        float a = 0.5f;
+        float a = UnityEngine.Random.Range(0.0f, 1.0f);
+        //float a = 0.5f;
         //-------------------------------------------------
         float b = 1.0f;
         int i;
