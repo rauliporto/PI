@@ -24,6 +24,7 @@ public class movimentoPaciente : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetComponent<informacaoPaciente>().addTime();
         if(canIMove)
         {
             GameObject aux = getVector();

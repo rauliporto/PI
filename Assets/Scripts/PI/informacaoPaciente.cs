@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class informacaoPaciente : MonoBehaviour
 {
-    public static int pulseira;
+    public int pulseira;
     public int senha;
+    public float tempo;
+
     // Start is called before the first frame update
     void Start()
     {
         pulseira = 0;
         senha = 0;
+        tempo = 0;
     }
 
     // Update is called once per frame
@@ -26,4 +29,17 @@ public class informacaoPaciente : MonoBehaviour
     public int getSenha(){
         return senha;
     }
+
+    public void addTime(){
+        tempo +=Time.deltaTime;
+    }
+
+    public void setPulseira(int pulseira){
+        this.pulseira = pulseira;
+    }
+
+    public int getPulseira(){
+        return pulseira;
+    }
+
 }
