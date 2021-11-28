@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class movimentoPaciente : MonoBehaviour
 {
     public string pos;
     public bool canIMove;
     public bool called;
-    public int status; //1 - called; 2 - waiting; 3 - calledTriage
     public int gravity;
+
+    NavMeshAgent patient;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,7 @@ public class movimentoPaciente : MonoBehaviour
         pos = "Door";
         canIMove = true;
         called = false;
+        patient = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -24,8 +27,7 @@ public class movimentoPaciente : MonoBehaviour
         if(canIMove)
         {
             GameObject aux = getVector();
-            transform.position = Vector3.MoveTowards(transform.position, aux.transform.position, 2.0F * Time.deltaTime);
-            status = 0;
+            patient.SetDestination(aux.transform.position);
         }
 
         if (nearPosition())
@@ -57,11 +59,18 @@ public class movimentoPaciente : MonoBehaviour
         return called;
     }
 
+    public int getGravity() {
+        return gravity;
+    }
+
+    public void setGravity(int gravity) {
+        gravity = gravity;
+    }
+
     public bool nearPosition()
     {
         GameObject aux = getVector();
-        print(Vector3.Distance(transform.position, aux.transform.position));
-        if (Vector3.Distance(transform.position, aux.transform.position) < 2f)
+        if (Vector3.Distance(transform.position, aux.transform.position) < 5f)
             return true;
         return false;
     }

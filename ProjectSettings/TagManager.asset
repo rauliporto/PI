@@ -21,6 +21,7 @@ TagManager:
   - Gabinete1
   - Gabinete2
   - Gabinete3
+  - Exit
   layers:
   - Default
   - TransparentFX

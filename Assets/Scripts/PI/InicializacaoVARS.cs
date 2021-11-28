@@ -6,7 +6,7 @@ public class InicializacaoVARS : MonoBehaviour
 {
     public static Queue<GameObject> filaEntrada;
     public static Queue<GameObject> filaTriagem;
-    public static Queue<GameObject> filaMedico;
+    public static List<GameObject> filaMedico;
     public static int numeroEnfermeiros;
     public static int numeroMedicos;
     public static int numeroRececionistas;
@@ -16,7 +16,7 @@ public class InicializacaoVARS : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        filaMedico = new Queue<GameObject>();
+        filaMedico = new List<GameObject>();
         filaTriagem = new Queue<GameObject>();
         filaEntrada = new Queue<GameObject>();
         numeroEnfermeiros = 2;
@@ -24,10 +24,15 @@ public class InicializacaoVARS : MonoBehaviour
         numeroMedicos = 2;
     }
 
-
     // Update is called once per frame
     void Update()
+    {}
+
+    class GravityComparator : IComparer<GameObject>
     {
-        
-}
+        public int Compare(GameObject x, GameObject y)
+        {
+            return x.GetComponent<movimentoPaciente>().getGravity().CompareTo(y.GetComponent<movimentoPaciente>().getGravity());
+        }
+    }
 }
