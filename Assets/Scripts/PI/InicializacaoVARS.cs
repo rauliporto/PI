@@ -6,7 +6,13 @@ public class InicializacaoVARS : MonoBehaviour
 {
     public static Queue<GameObject> filaEntrada;
     public static Queue<GameObject> filaTriagem;
-    public static Queue<GameObject> filaMedico;
+    public static Queue<GameObject> filaMedico1;
+    public static Queue<GameObject> filaMedico2;
+    public static Queue<GameObject> filaMedico3;
+    public static Queue<GameObject> filaMedico4;
+    public static Queue<GameObject> filaMedico5;
+    public static Queue<GameObject> filaMedico6;
+
     public static int numeroEnfermeiros;
     public static int numeroMedicos;
     public static int numeroRececionistas;
@@ -16,7 +22,12 @@ public class InicializacaoVARS : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        filaMedico = new Queue<GameObject>();
+        filaMedico1 = new Queue<GameObject>();
+        filaMedico2 = new Queue<GameObject>();
+        filaMedico3 = new Queue<GameObject>();
+        filaMedico4 = new Queue<GameObject>();
+        filaMedico5 = new Queue<GameObject>();
+        filaMedico6 = new Queue<GameObject>();
         filaTriagem = new Queue<GameObject>();
         filaEntrada = new Queue<GameObject>();
         numeroEnfermeiros = 2;

@@ -64,12 +64,14 @@ public class geradorPacientes : MonoBehaviour
         if (mu <= 0) return 0;
         
         // é preciso criar o random entre 0.0 e 1.0
-        float a = UnityEngine.Random.Range(0.0f, 1.0f);
+        
         //float a = 0.5f;
         //-------------------------------------------------
         float b = 1.0f;
+        float a = 0.0f;
         int i;
         for (i = 0; b >= Math.Exp(-mu); i++)
+            a = UnityEngine.Random.Range(0.0f, 1.0f);
             b = b * a;
 
        return i - 1;
