@@ -70,10 +70,10 @@ public class geradorPacientes : MonoBehaviour
         float b = 1.0f;
         float a = 0.0f;
         int i;
-        for (i = 0; b >= Math.Exp(-mu); i++)
+        for (i = 0; b >= Math.Exp(-mu); i++) {
             a = UnityEngine.Random.Range(0.0f, 1.0f);
             b = b * a;
-
+        }
        return i - 1;
     }
 }
