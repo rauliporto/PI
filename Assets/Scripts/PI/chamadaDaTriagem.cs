@@ -53,7 +53,7 @@ public class chamadaDaTriagem : MonoBehaviour
         switch (gravity)
         {
             case 1: c = Color.red; break;
-            case 2: c = new Color(0.2F, 0.3F, 0.4F); break;
+            case 2: c = new Color(1.0F, 0.5F, 0.0F); break;
             case 3: c = Color.yellow; break;
             case 4: c = Color.blue; break;
             case 5: c = Color.green; break;
