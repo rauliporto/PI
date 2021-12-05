@@ -16,7 +16,7 @@ public class geradorEnfermeiras : MonoBehaviour
 
         //if (InicializacaoVARS.numeroEnfermeiros > 0)
         //{
-            enfermeiro1 = Instantiate(objectEnfermeiras, new Vector3(-42F, 1.67F, 26F), Quaternion.identity);
+            enfermeiro1 = Instantiate(objectEnfermeiras, new Vector3(-41F, 1.67F, 26F), Quaternion.identity);
             enfermeiro1.transform.rotation = Quaternion.Euler(0, -90, 0);
             enfermeiro1.gameObject.tag = "TriageRoom";
         //}

@@ -43,7 +43,9 @@ public class geradorPacientes : MonoBehaviour
             if(criados < calculados){
                 print("criados: " + criados);
                 GameObject gerado = Instantiate(objectNPC, new Vector3(xPos, 2.0F, zPos), Quaternion.identity);
+                lock(InicializacaoVARS.filaEntrada){
                 InicializacaoVARS.filaEntrada.Enqueue(gerado);
+                }
                 gerado.GetComponent<informacaoPaciente>().setSenha(senha);
                 senha++;
                 print(InicializacaoVARS.filaEntrada.Count);
