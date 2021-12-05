@@ -42,6 +42,7 @@ public class chamadaDaTriagem : MonoBehaviour
                     pacienteAtual = InicializacaoVARS.filaTriagem.Dequeue();
                     pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                     temporizador = exponential();
+                    print(temporizador);
                 }
             }
         }
