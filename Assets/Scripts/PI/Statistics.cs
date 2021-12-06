@@ -33,35 +33,21 @@ public sealed class Statistics : MonoBehaviour
         times.text = "";
         foreach (KeyValuePair<int, CountPatients> s in stats)
         {         
-            times.text += "<color="+gravityToColor(s.Key)+">" + gravityToString(s.Key) +"</color>" + ":" + (s.Value.getTotalTime()/s.Value.getTotalPatients()) + "\n";
+            times.text += "<color="+gravityToColor(s.Key).Key+">" + gravityToColor(s.Key).Value +"</color>" + ":" + (s.Value.getTotalTime()/s.Value.getTotalPatients()) + "\n";
         }
     }
 
-    private string gravityToString(int gravity)
+    private KeyValuePair<string, string> gravityToColor(int gravity)
     {
         switch (gravity)
         {
-            case 1: return "Vermelho";
-            case 2: return "Laranja";
-            case 3: return "Amarelo";
-            case 4: return "Azul";
-            case 5: return "Verde";
+            case 1: return new KeyValuePair<string, string>("red", "Vermelho");
+            case 2: return new KeyValuePair<string, string>("#FFA500", "Laranja");
+            case 3: return new KeyValuePair<string, string>("yellow", "Amarelo");
+            case 4: return new KeyValuePair<string, string>("blue", "Azul");
+            case 5: return new KeyValuePair<string, string>("green", "Verde");
             default:
-               return "Branco";
-        } 
-    }
-
-    private string gravityToColor(int gravity)
-    {
-        switch (gravity)
-        {
-            case 1: return "red"; 
-            case 2: return "#FFA500";
-            case 3: return "yellow";
-            case 4: return "blue"; 
-            case 5: return "green";
-            default:
-                return "white";
+               return new KeyValuePair<string, string>("white", "Branco");
         } 
     }
     
