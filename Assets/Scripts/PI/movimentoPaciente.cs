@@ -39,7 +39,7 @@ public class movimentoPaciente : MonoBehaviour
             canIMove = false;
             called = true;
             if (pos == "Exit") {
-                Statistics.Instance.setStatistics(GetComponent<informacaoPaciente>().getPulseira(), GetComponent<informacaoPaciente>().getTime());
+                updateStatistics();              
                 Object.Destroy(this.gameObject);    
             }
         }           
@@ -63,6 +63,10 @@ public class movimentoPaciente : MonoBehaviour
 
     public bool getCalled() {
         return called;
+    }
+
+    public void updateStatistics() {
+        Statistics.Instance.setStatistics(GetComponent<informacaoPaciente>().getPulseira(), GetComponent<informacaoPaciente>().getTime());
     }
 
     public bool nearPosition()

@@ -60,7 +60,12 @@ public class chamadaDaTriagem : MonoBehaviour
             default:
                 break;
         } 
-        pacienteAtual.transform.Find("Specifics").Find("Bandages").Find("Bandage (1)").GetComponent<Renderer>().material.SetColor("_Color", c);
+        Transform bangages = pacienteAtual.transform.Find("Specifics").Find("Bandages");
+        
+        foreach (Transform bangage in bangages)
+        {
+            bangage.GetComponent<Renderer>().material.SetColor("_Color", c);
+        }
     }
 
     
