@@ -34,6 +34,10 @@ public class informacaoPaciente : MonoBehaviour
         tempo +=Time.deltaTime;
     }
 
+    public float getTime(){
+        return tempo;
+    }
+
     public void setPulseira(int pulseira){
         this.pulseira = pulseira;
     }

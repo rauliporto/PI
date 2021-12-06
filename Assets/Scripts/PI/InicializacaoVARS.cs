@@ -38,12 +38,4 @@ public class InicializacaoVARS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {}
-
-    class GravityComparator : IComparer<GameObject>
-    {
-        public int Compare(GameObject x, GameObject y)
-        {
-            return x.GetComponent<movimentoPaciente>().getGravity().CompareTo(y.GetComponent<movimentoPaciente>().getGravity());
-        }
-    }
 }

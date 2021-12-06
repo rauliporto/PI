@@ -27,16 +27,21 @@ public class movimentoPaciente : MonoBehaviour
         GetComponent<informacaoPaciente>().addTime();
         if(canIMove)
         {
+            this.GetComponent<NavMeshAgent>().isStopped = false;
             GameObject aux = getVector();
             patient.SetDestination(aux.transform.position);
         }
 
         if (nearPosition())
         {
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
-            GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
+            this.GetComponent<NavMeshAgent>().isStopped = true;
             canIMove = false;
             called = true;
+            if (pos == "Exit") {
+                updateStatistics();              
+                Object.Destroy(this.gameObject);    
+            }
         }           
     }
 
@@ -60,18 +65,14 @@ public class movimentoPaciente : MonoBehaviour
         return called;
     }
 
-    public int getGravity() {
-        return gravity;
-    }
-
-    public void setGravity(int gravity) {
-        gravity = gravity;
+    public void updateStatistics() {
+        Statistics.Instance.setStatistics(GetComponent<informacaoPaciente>().getPulseira(), GetComponent<informacaoPaciente>().getTime());
     }
 
     public bool nearPosition()
     {
         GameObject aux = getVector();
-        if (Vector3.Distance(transform.position, aux.transform.position) < 5f)
+        if (Vector3.Distance(transform.position, aux.transform.position) < 2.5F)
             return true;
         return false;
     }

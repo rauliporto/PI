@@ -43,7 +43,7 @@ public class chamadaDeMedico : MonoBehaviour
                 if (InicializacaoVARS.filaMedico1.Count > 0 && InicializacaoVARS.filaMedico1.Peek().GetComponent<movimentoPaciente>().getCalled())
                 {
                     pacienteAtual = InicializacaoVARS.filaMedico1.Dequeue();
-                    int gravity = pacienteAtual.GetComponent<movimentoPaciente>().getGravity();
+                    int gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
                     pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                     temporizador = normal(gravity);
                 }
@@ -52,7 +52,7 @@ public class chamadaDeMedico : MonoBehaviour
                     if (InicializacaoVARS.filaMedico2.Count > 0 && InicializacaoVARS.filaMedico2.Peek().GetComponent<movimentoPaciente>().getCalled())
                     {
                         pacienteAtual = InicializacaoVARS.filaMedico2.Dequeue();
-                        int gravity = pacienteAtual.GetComponent<movimentoPaciente>().getGravity();
+                        int gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
                         pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                         temporizador = normal(gravity);
                     }
@@ -61,7 +61,7 @@ public class chamadaDeMedico : MonoBehaviour
                         if (InicializacaoVARS.filaMedico3.Count > 0 && InicializacaoVARS.filaMedico3.Peek().GetComponent<movimentoPaciente>().getCalled())
                         {
                             pacienteAtual = InicializacaoVARS.filaMedico3.Dequeue();
-                            int gravity = pacienteAtual.GetComponent<movimentoPaciente>().getGravity();
+                            int gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
                             pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                             temporizador = normal(gravity);
                         }
@@ -70,7 +70,7 @@ public class chamadaDeMedico : MonoBehaviour
                             if (InicializacaoVARS.filaMedico4.Count > 0 && InicializacaoVARS.filaMedico4.Peek().GetComponent<movimentoPaciente>().getCalled())
                             {
                                 pacienteAtual = InicializacaoVARS.filaMedico4.Dequeue();
-                                int gravity = pacienteAtual.GetComponent<movimentoPaciente>().getGravity();
+                                int gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
                                 pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                                 temporizador = normal(gravity);
                             }
@@ -79,7 +79,7 @@ public class chamadaDeMedico : MonoBehaviour
                                 if (InicializacaoVARS.filaMedico5.Count > 0 && InicializacaoVARS.filaMedico5.Peek().GetComponent<movimentoPaciente>().getCalled())
                                 {
                                     pacienteAtual = InicializacaoVARS.filaMedico5.Dequeue();
-                                    int gravity = pacienteAtual.GetComponent<movimentoPaciente>().getGravity();
+                                    int gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
                                     pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                                     temporizador = normal(gravity);
                                 }
@@ -88,7 +88,7 @@ public class chamadaDeMedico : MonoBehaviour
                                     if (InicializacaoVARS.filaMedico6.Count > 0 && InicializacaoVARS.filaMedico6.Peek().GetComponent<movimentoPaciente>().getCalled())
                                     {
                                         pacienteAtual = InicializacaoVARS.filaMedico6.Dequeue();
-                                        int gravity = pacienteAtual.GetComponent<movimentoPaciente>().getGravity();
+                                        int gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
                                         pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                                         temporizador = normal(gravity);
                                     }

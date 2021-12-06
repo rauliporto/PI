@@ -29,7 +29,7 @@ public class chamadaDaTriagem : MonoBehaviour
             else {
                 pacienteAtual.GetComponent<movimentoPaciente>().moveTo("WaitingArea2");
                 int gravity = dirac();
-                pacienteAtual.GetComponent<movimentoPaciente>().setGravity(gravity);
+                pacienteAtual.GetComponent<informacaoPaciente>().setPulseira(gravity);
                 addQueue(gravity);
                 changeColorBandage(gravity);
                 pacienteAtual = null;
@@ -42,6 +42,7 @@ public class chamadaDaTriagem : MonoBehaviour
                     pacienteAtual = InicializacaoVARS.filaTriagem.Dequeue();
                     pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                     temporizador = exponential();
+                    print(temporizador);
                 }
             }
         }
@@ -59,7 +60,12 @@ public class chamadaDaTriagem : MonoBehaviour
             default:
                 break;
         } 
-        pacienteAtual.transform.Find("Specifics").Find("Bandages").Find("Bandage (1)").GetComponent<Renderer>().material.SetColor("_Color", c);
+        Transform bangages = pacienteAtual.transform.Find("Specifics").Find("Bandages");
+        
+        foreach (Transform bangage in bangages)
+        {
+            bangage.GetComponent<Renderer>().material.SetColor("_Color", c);
+        }
     }
 
     
