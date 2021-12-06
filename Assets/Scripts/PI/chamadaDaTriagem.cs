@@ -29,7 +29,7 @@ public class chamadaDaTriagem : MonoBehaviour
             else {
                 pacienteAtual.GetComponent<movimentoPaciente>().moveTo("WaitingArea2");
                 int gravity = dirac();
-                pacienteAtual.GetComponent<movimentoPaciente>().setGravity(gravity);
+                pacienteAtual.GetComponent<informacaoPaciente>().setPulseira(gravity);
                 addQueue(gravity);
                 changeColorBandage(gravity);
                 pacienteAtual = null;

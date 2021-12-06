@@ -38,10 +38,11 @@ public class movimentoPaciente : MonoBehaviour
             this.GetComponent<NavMeshAgent>().isStopped = true;
             canIMove = false;
             called = true;
-            if (pos == "Exit")
+            if (pos == "Exit") {
+                Statistics.Instance.setStatistics(GetComponent<informacaoPaciente>().getPulseira(), GetComponent<informacaoPaciente>().getTime());
                 Object.Destroy(this.gameObject);    
-        }   
-         
+            }
+        }           
     }
 
     public void moveTo(string pos)
@@ -62,14 +63,6 @@ public class movimentoPaciente : MonoBehaviour
 
     public bool getCalled() {
         return called;
-    }
-
-    public int getGravity() {
-        return gravity;
-    }
-
-    public void setGravity(int gravity) {
-        gravity = gravity;
     }
 
     public bool nearPosition()
