@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.IO;
+using System.Text;
 
 public sealed class Statistics : MonoBehaviour
 {
@@ -11,7 +14,7 @@ public sealed class Statistics : MonoBehaviour
 
     public Text times;
     private static Dictionary<int, CountPatients> stats;
-    
+
     static Statistics()
     {
         statistics = new Statistics();
@@ -25,7 +28,26 @@ public sealed class Statistics : MonoBehaviour
             stats[gravity].increaseTotalTime(time);
         }
         else
-            stats.Add(gravity, new CountPatients(1, time));        
+            stats.Add(gravity, new CountPatients(1, time));
+    }
+
+    public void writeFile(int gravity, float time, int exam)
+    {
+        string workingDirectory = Environment.CurrentDirectory;
+        String path = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+        if (!File.Exists(path + "/test.csv"))
+        {
+            //Open the File
+            StreamWriter sw = File.CreateText(path+"/test.csv");
+            sw.Write(gravity + ";" + exam + ";" + time+"\n");
+            sw.Close();
+        }
+        else
+        {
+            StreamWriter sw = File.AppendText(path + "/test.csv");
+            sw.Write(gravity + ";" + exam + ";" + time+"\n");
+            sw.Close();
+        }
     }
 
     void Update()

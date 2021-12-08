@@ -67,6 +67,7 @@ public class movimentoPaciente : MonoBehaviour
 
     public void updateStatistics() {
         Statistics.Instance.setStatistics(GetComponent<informacaoPaciente>().getPulseira(), GetComponent<informacaoPaciente>().getTime());
+        Statistics.Instance.writeFile(GetComponent<informacaoPaciente>().getPulseira(), GetComponent<informacaoPaciente>().getTime(),0);
     }
 
     public bool nearPosition()
