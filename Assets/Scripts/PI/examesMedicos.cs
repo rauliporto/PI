@@ -5,36 +5,35 @@ using System;
 
 public class examesMedicos : MonoBehaviour
 {
-    
+    private static readonly examesMedicos instance = new examesMedicos();
+    private static examesMedicos exames;
+
     private int TOTAL_ACONTECIMENTOS = 10;
     private float PROB_SUCESSOS = 0.6f;
     private int tentativa;
     private int prox_sucesso;
     private float intervalo_sucesso;
     private float sucessos_acumulados;
-
-
-    // Start is called before the first frame update
-    void Start()
+    
+    
+    static examesMedicos()
     {
-        tentativa = -1;
-        prox_sucesso = -1;
+        exames = new examesMedicos();
     }
 
-    // Update is called once per frame
-    void Update()
+    public static examesMedicos Instance
     {
-        
+        get { return instance; }
     }
 
-    public int binomial(int n, float p)
+    private int binomial(int n, float p)
     {
         int sum = 0;
         for (int i = 0; i < n; i++) sum += Convert.ToInt32(bernoulli(p));
         return sum;
     }
 
-    public bool bernoulli(float p)
+    private bool bernoulli(float p)
     {
         return UnityEngine.Random.Range(0.0f, 1.0f) < p;
     }
@@ -44,9 +43,7 @@ public class examesMedicos : MonoBehaviour
         if (prox_sucesso == -1 || tentativa >= TOTAL_ACONTECIMENTOS) 
         {
             intervalo_sucesso = TOTAL_ACONTECIMENTOS / binomial(TOTAL_ACONTECIMENTOS, PROB_SUCESSOS);
-
             prox_sucesso = roundToNearestInteger(intervalo_sucesso);
-            
             tentativa = -1;
         }
 

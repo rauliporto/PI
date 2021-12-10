@@ -31,9 +31,14 @@ public class chamadaDeMedico : MonoBehaviour
                 temporizador -= Time.deltaTime;
             }
             else {
-                //examesMedicos exame = FindObjectOfType<examesMedicos>();
-                //print(exame.hasExam());
-                pacienteAtual.GetComponent<movimentoPaciente>().moveTo("Exit");  
+                bool goToExame = examesMedicos.Instance.hasExam();
+                print("Goes to exame: " + goToExame);
+                if (goToExame) {
+                    pacienteAtual.GetComponent<movimentoPaciente>().goToExam();
+                } else {
+                    pacienteAtual.GetComponent<movimentoPaciente>().moveTo("Exit");
+                }
+
                 pacienteAtual = null;
             }
         }

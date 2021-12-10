@@ -8,7 +8,7 @@ public class movimentoPaciente : MonoBehaviour
     public string pos;
     public bool canIMove;
     public bool called;
-    public int gravity;
+    public float temporizadorExam;
 
     NavMeshAgent patient;
 
@@ -42,7 +42,17 @@ public class movimentoPaciente : MonoBehaviour
                 updateStatistics();              
                 Object.Destroy(this.gameObject);    
             }
-        }           
+        }
+
+        if(GetComponent<informacaoPaciente>().getExam()) 
+        {
+            if(temporizadorExam < 0)
+            {
+                this.moveTo("Exit");
+            } else {
+                temporizadorExam -= Time.deltaTime;
+            }
+        }
     }
 
     public void moveTo(string pos)
@@ -76,5 +86,11 @@ public class movimentoPaciente : MonoBehaviour
         if (Vector3.Distance(transform.position, aux.transform.position) < 2.5F)
             return true;
         return false;
+    }
+
+    public void goToExam(){
+        this.moveTo("ExameArea");
+        GetComponent<informacaoPaciente>().setExam(true);
+        temporizadorExam = 50;
     }
 }
