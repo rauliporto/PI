@@ -11,7 +11,7 @@ public class examesMedicos : MonoBehaviour
     private int TOTAL_ACONTECIMENTOS = 10;
     private float PROB_SUCESSOS = 0.6f;
     private int tentativa;
-    private int prox_sucesso;
+    private float prox_sucesso = -1;
     private float intervalo_sucesso;
     private float sucessos_acumulados;
     
@@ -42,16 +42,18 @@ public class examesMedicos : MonoBehaviour
     {
         if (prox_sucesso == -1 || tentativa >= TOTAL_ACONTECIMENTOS) 
         {
-            intervalo_sucesso = TOTAL_ACONTECIMENTOS / binomial(TOTAL_ACONTECIMENTOS, PROB_SUCESSOS);
-            prox_sucesso = roundToNearestInteger(intervalo_sucesso);
-            tentativa = -1;
+            int bin = binomial(TOTAL_ACONTECIMENTOS, PROB_SUCESSOS);
+            print("Exam: " + bin);
+            intervalo_sucesso = (float) TOTAL_ACONTECIMENTOS / (float) bin;
+            prox_sucesso = intervalo_sucesso;
+            tentativa = 0;
         }
 
         tentativa++;
 
-        if (tentativa == prox_sucesso)
+        if (tentativa == roundToNearestInteger(prox_sucesso))
         {
-            prox_sucesso += roundToNearestInteger(intervalo_sucesso * (tentativa + 1));
+            prox_sucesso += intervalo_sucesso;
             return true;
         } 
         else {

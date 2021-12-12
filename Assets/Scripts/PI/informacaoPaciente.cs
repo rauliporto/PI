@@ -7,7 +7,7 @@ public class informacaoPaciente : MonoBehaviour
     public int pulseira;
     public int senha;
     public float tempo;
-    public bool didExam;
+    public bool fezExame;
 
     // Start is called before the first frame update
     void Start()
@@ -47,11 +47,11 @@ public class informacaoPaciente : MonoBehaviour
         return pulseira;
     }
 
-    public void setExam(bool didExam) {
-        this.didExam = didExam;
+    public void setExam(bool fezExame) {
+        this.fezExame = fezExame;
     }
     
     public bool getExam(){
-        return this.didExam;
+        return this.fezExame;
     }
 }
