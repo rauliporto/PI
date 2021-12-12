@@ -31,7 +31,7 @@ public sealed class Statistics : MonoBehaviour
             stats.Add(gravity, new CountPatients(1, time));
     }
 
-    public void writeFile(int gravity, float time, int exam)
+    public void writeFile(int gravity, float time, bool exam)
     {
         string workingDirectory = Environment.CurrentDirectory;
         String path = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
