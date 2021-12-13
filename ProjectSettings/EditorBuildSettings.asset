@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/BasicWorkingHospital.unity
-    guid: 3f26263761fa6448d81f61d2140bcd01
+    path: Assets/Scenes/BasicWorkingHospitalv2.unity
+    guid: e303f5d7357ac954c817f6a897d8976d
   m_configObjects: {}
