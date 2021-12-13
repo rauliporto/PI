@@ -33,8 +33,9 @@ public sealed class Statistics : MonoBehaviour
 
     public void writeFile(int gravity, float time, bool exam)
     {
-        string workingDirectory = Environment.CurrentDirectory;
-        String path = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+        //string workingDirectory = Environment.CurrentDirectory;
+        String path = Directory.GetCurrentDirectory();
+        print(path);
         if (!File.Exists(path + "/test.csv"))
         {
             //Open the File
