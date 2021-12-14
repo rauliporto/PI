@@ -40,7 +40,8 @@ public class movimentoPaciente : MonoBehaviour
             called = true;
             if (pos == "Exit") {
                 updateStatistics();              
-                Object.Destroy(this.gameObject);    
+                
+                GameObject.Destroy(this.gameObject);    
             }
         }
 
@@ -76,6 +77,7 @@ public class movimentoPaciente : MonoBehaviour
     }
 
     public void updateStatistics() {
+        print(" Aqui 1");
         Statistics.Instance.setStatistics(GetComponent<informacaoPaciente>().getPulseira(), GetComponent<informacaoPaciente>().getTime());
         Statistics.Instance.writeFileTotals(GetComponent<informacaoPaciente>().getPulseira(), GetComponent<informacaoPaciente>().getTime(), GetComponent<informacaoPaciente>().getExam());
     }

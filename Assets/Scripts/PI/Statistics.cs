@@ -52,8 +52,7 @@ public sealed class Statistics : MonoBehaviour
 
     public void writeFile(string name, string text)
     {
-        string workingDirectory = Environment.CurrentDirectory;
-        String path = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+        String path = Directory.GetCurrentDirectory();
         if (!File.Exists(path + name))
         {
             //Open the File
