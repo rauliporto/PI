@@ -6,14 +6,15 @@ public class chamadaDeMedico : MonoBehaviour
 {
     public float temporizador;
     public GameObject pacienteAtual;
+    public int gravity;
 
     private readonly float sd = 20f;
-    private readonly float mean1 = 20f;
-    private readonly float mean2 = 15f;
-    private readonly float mean3 = 12f;
-    private readonly float mean4 = 8f;
-    private readonly float mean5 = 6f;
-    private readonly float mean6 = 4f;
+    private readonly float mean1 = 35f;
+    private readonly float mean2 = 30f;
+    private readonly float mean3 = 20f;
+    private readonly float mean4 = 15f;
+    private readonly float mean5 = 10f;
+    private readonly float mean6 = 5f;
  
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class chamadaDeMedico : MonoBehaviour
     {
         temporizador = 50;
         pacienteAtual = null;
+        gravity = 0;
     }
 
     // Update is called once per frame
@@ -48,61 +50,66 @@ public class chamadaDeMedico : MonoBehaviour
                 if (InicializacaoVARS.filaMedico1.Count > 0 && InicializacaoVARS.filaMedico1.Peek().GetComponent<movimentoPaciente>().getCalled())
                 {
                     pacienteAtual = InicializacaoVARS.filaMedico1.Dequeue();
-                    int gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
+                    gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
                     pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                     temporizador = normal(gravity);
+                    updateStatistics();
                 }
                 else
                 {
                     if (InicializacaoVARS.filaMedico2.Count > 0 && InicializacaoVARS.filaMedico2.Peek().GetComponent<movimentoPaciente>().getCalled())
                     {
                         pacienteAtual = InicializacaoVARS.filaMedico2.Dequeue();
-                        int gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
+                        gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
                         pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                         temporizador = normal(gravity);
+                        updateStatistics();
                     }
                     else
                     {
                         if (InicializacaoVARS.filaMedico3.Count > 0 && InicializacaoVARS.filaMedico3.Peek().GetComponent<movimentoPaciente>().getCalled())
                         {
                             pacienteAtual = InicializacaoVARS.filaMedico3.Dequeue();
-                            int gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
+                            gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
                             pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                             temporizador = normal(gravity);
+                            updateStatistics();
                         }
                         else
                         {
                             if (InicializacaoVARS.filaMedico4.Count > 0 && InicializacaoVARS.filaMedico4.Peek().GetComponent<movimentoPaciente>().getCalled())
                             {
                                 pacienteAtual = InicializacaoVARS.filaMedico4.Dequeue();
-                                int gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
+                                gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
                                 pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                                 temporizador = normal(gravity);
+                                updateStatistics();
                             }
                             else
                             {
                                 if (InicializacaoVARS.filaMedico5.Count > 0 && InicializacaoVARS.filaMedico5.Peek().GetComponent<movimentoPaciente>().getCalled())
                                 {
                                     pacienteAtual = InicializacaoVARS.filaMedico5.Dequeue();
-                                    int gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
+                                    gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
                                     pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                                     temporizador = normal(gravity);
+                                    updateStatistics();
                                 }
                                 else
                                 {
                                     if (InicializacaoVARS.filaMedico6.Count > 0 && InicializacaoVARS.filaMedico6.Peek().GetComponent<movimentoPaciente>().getCalled())
                                     {
                                         pacienteAtual = InicializacaoVARS.filaMedico6.Dequeue();
-                                        int gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
+                                        gravity = pacienteAtual.GetComponent<informacaoPaciente>().getPulseira();
                                         pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                                         temporizador = normal(gravity);
+                                        updateStatistics();
                                     }
                                 }
                             }
                         }
                     }
                 }
-
             }
         }
     }
@@ -143,5 +150,9 @@ public class chamadaDeMedico : MonoBehaviour
         }
         return valor;
     }
+
+    public void updateStatistics() {
+        Statistics.Instance.writeFileDoctor(pacienteAtual.GetComponent<informacaoPaciente>().getPulseira(), pacienteAtual.GetComponent<informacaoPaciente>().getTempoEsperaMedico());
+    }   
 }
 

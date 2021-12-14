@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 using System.IO;
 using System.Text;
+using System.Linq;
 
 public sealed class Statistics : MonoBehaviour
 {
@@ -13,16 +14,16 @@ public sealed class Statistics : MonoBehaviour
     private static Statistics statistics;
 
     public Text times;
-    private static Dictionary<int, CountPatients> stats;
+    private static SortedDictionary<int, CountPatients> stats;
 
     static Statistics()
     {
         statistics = new Statistics();
-        stats = new Dictionary<int, CountPatients>();
+        stats = new SortedDictionary<int, CountPatients>();
     }
 
     public void setStatistics(int gravity, float time)
-    {        
+    {   
         if (stats.ContainsKey(gravity)) {
             stats[gravity].increaseTotalPatients();
             stats[gravity].increaseTotalTime(time);
@@ -30,32 +31,55 @@ public sealed class Statistics : MonoBehaviour
         else
             stats.Add(gravity, new CountPatients(1, time));
     }
+    
+    public void writeFileTotals(int gravity, float time, bool exam)
+    {
+        string txt = gravity + ";" + exam + ";" + time+"\n";
+        writeFile("/test.csv", txt);
+    }
 
-    public void writeFile(int gravity, float time, bool exam)
+    public void writeFileTriage(float time)
+    {
+        string txt = time+"\n";
+        writeFile("/testTriagem.csv", txt);
+    }
+
+    public void writeFileDoctor(int gravity, float time)
+    {
+        string txt = gravity + ";" + time+"\n";
+        writeFile("/testMedico.csv", txt);
+    }
+
+    public void writeFile(string name, string text)
     {
         string workingDirectory = Environment.CurrentDirectory;
         String path = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
-        if (!File.Exists(path + "/test.csv"))
+        if (!File.Exists(path + name))
         {
             //Open the File
-            StreamWriter sw = File.CreateText(path+"/test.csv");
-            sw.Write(gravity + ";" + exam + ";" + time+"\n");
+            StreamWriter sw = File.CreateText(path + name);
+            sw.Write(text);
             sw.Close();
         }
         else
         {
-            StreamWriter sw = File.AppendText(path + "/test.csv");
-            sw.Write(gravity + ";" + exam + ";" + time+"\n");
+            StreamWriter sw = File.AppendText(path + name);
+            sw.Write(text);
             sw.Close();
         }
     }
 
     void Update()
     {
+        double total = 0;
         times.text = "";
-        foreach (KeyValuePair<int, CountPatients> s in stats)
-        {         
-            times.text += "<color="+gravityToColor(s.Key).Key+">" + gravityToColor(s.Key).Value +"</color>" + ":" + (s.Value.getTotalTime()/s.Value.getTotalPatients()) + "\n";
+        if(stats.Count != 0) 
+            times.text = "<b>Tempo de Espera Médio</b>\n";
+
+        foreach (KeyValuePair<int, CountPatients> s in stats.OrderBy(key => key.Key))
+        {   
+            total = System.Math.Round(((s.Value.getTotalTime()/10)/s.Value.getTotalPatients()), 2);     
+            times.text += "<color="+gravityToColor(s.Key).Key+">" + gravityToColor(s.Key).Value +"</color>" + total + "\n";
         }
     }
 
@@ -63,13 +87,13 @@ public sealed class Statistics : MonoBehaviour
     {
         switch (gravity)
         {
-            case 1: return new KeyValuePair<string, string>("red", "Vermelho");
-            case 2: return new KeyValuePair<string, string>("#FFA500", "Laranja");
-            case 3: return new KeyValuePair<string, string>("yellow", "Amarelo");
-            case 4: return new KeyValuePair<string, string>("blue", "Azul");
-            case 5: return new KeyValuePair<string, string>("green", "Verde");
+            case 1: return new KeyValuePair<string, string>("red",     "Vermelho:");
+            case 2: return new KeyValuePair<string, string>("#FFA500", "Laranja:  ");
+            case 3: return new KeyValuePair<string, string>("yellow",  "Amarelo: ");
+            case 4: return new KeyValuePair<string, string>("blue",    "Azul:       ");
+            case 5: return new KeyValuePair<string, string>("green",   "Verde:    ");
             default:
-               return new KeyValuePair<string, string>("white", "Branco");
+               return new KeyValuePair<string, string>("white", "Branco:  ");
         } 
     }
     

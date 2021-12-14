@@ -9,12 +9,18 @@ public class informacaoPaciente : MonoBehaviour
     public float tempo;
     public bool fezExame;
 
+    public float tempoEsperaTriagem;
+    public float tempoEsperaMedico;
+
+
     // Start is called before the first frame update
     void Start()
     {
         pulseira = 0;
         senha = 0;
         tempo = 0;
+        tempoEsperaTriagem = 0;
+        tempoEsperaMedico = 0;
     }
 
     // Update is called once per frame
@@ -37,6 +43,22 @@ public class informacaoPaciente : MonoBehaviour
 
     public float getTime(){
         return tempo;
+    }
+
+    public void addTempoEsperaTriagem(){
+        tempoEsperaTriagem +=Time.deltaTime;
+    }
+
+    public float getTempoEsperaTriagem(){
+        return tempoEsperaTriagem;
+    }
+
+    public void addTempoEsperaMedico(){
+        tempoEsperaMedico +=Time.deltaTime;
+    }
+
+    public float getTempoEsperaMedico(){
+        return tempoEsperaMedico;
     }
 
     public void setPulseira(int pulseira){

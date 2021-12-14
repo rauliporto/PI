@@ -40,9 +40,9 @@ public class chamadaDaTriagem : MonoBehaviour
             if (pacienteAtual == null) {
                 if (InicializacaoVARS.filaTriagem.Count > 0 && InicializacaoVARS.filaTriagem.Peek().GetComponent<movimentoPaciente>().getCalled()) {
                     pacienteAtual = InicializacaoVARS.filaTriagem.Dequeue();
+                    updateStatistics();
                     pacienteAtual.GetComponent<movimentoPaciente>().moveTo(gameObject.tag);
                     temporizador = exponential();
-                    print(temporizador);
                 }
             }
         }
@@ -70,6 +70,8 @@ public class chamadaDaTriagem : MonoBehaviour
 
     
     public void addQueue(int gravity) {
+        pacienteAtual.GetComponent<informacaoPaciente>().addTempoEsperaMedico(); 
+
         switch (gravity)
         {
             case 1:
@@ -100,5 +102,9 @@ public class chamadaDaTriagem : MonoBehaviour
         else if (u < 0.949) return 4;
         else if (u < 0.967) return 5;
         else return 6;   
-    }       
+    }  
+
+    public void updateStatistics() {
+        Statistics.Instance.writeFileTriage(pacienteAtual.GetComponent<informacaoPaciente>().getTempoEsperaTriagem());
+    }     
 }
