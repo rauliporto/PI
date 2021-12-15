@@ -14,12 +14,12 @@ public class geradorRececionistas : MonoBehaviour
 
         if (InicializacaoVARS.numeroRececionistas > 0)
         {
-            rececionista1 = Instantiate(objectRececionista, new Vector3(-32F, 1.55F, -15.5F), Quaternion.identity);
+            rececionista1 = Instantiate(objectRececionista, new Vector3(-31F, 1.55F, -16F), Quaternion.identity);
             rececionista1.gameObject.tag = "Reception";
                     }
         if (InicializacaoVARS.numeroRececionistas > 1)
         {
-            rececionista2 = Instantiate(objectRececionista, new Vector3(-11F, 1.55F, -15.5F), Quaternion.identity);
+            rececionista2 = Instantiate(objectRececionista, new Vector3(-11.5F, 1.55F, -16F), Quaternion.identity);
            rececionista2.gameObject.tag = "Reception2";
            // rececionista2.gabinete = 2;
         }

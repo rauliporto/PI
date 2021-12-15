@@ -15,7 +15,7 @@ public class geradorMedicos : MonoBehaviour
         print(InicializacaoVARS.numeroMedicos);
         //if (InicializacaoVARS.numeroMedicos > 0)
         //{
-            medico1 = Instantiate(objectMedicos, new Vector3(-53F, 1.55F, 35F), Quaternion.identity);
+            medico1 = Instantiate(objectMedicos, new Vector3(-52F, 1.55F, 35F), Quaternion.identity);
             medico1.transform.rotation = Quaternion.Euler(0, 180, 0);
             medico1.gameObject.tag = "Gabinete1";
         //}
@@ -26,7 +26,7 @@ public class geradorMedicos : MonoBehaviour
             medico2.gameObject.tag = "Gabinete2";
         //}
         //if (InicializacaoVARS.numeroMedicos > 2) {
-            medico3 = Instantiate(objectMedicos, new Vector3(10F, 1.55F, 58F), Quaternion.identity);
+            medico3 = Instantiate(objectMedicos, new Vector3(9F, 1.55F, 58F), Quaternion.identity);
             medico3.transform.rotation = Quaternion.Euler(0, 180, 0);
             medico3.gameObject.tag = "Gabinete3";
         //}
