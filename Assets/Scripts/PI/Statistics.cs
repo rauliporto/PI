@@ -87,12 +87,12 @@ public sealed class Statistics : MonoBehaviour
         switch (gravity)
         {
             case 1: return new KeyValuePair<string, string>("red",     "Vermelho:");
-            case 2: return new KeyValuePair<string, string>("#FFA500", "Laranja:  ");
-            case 3: return new KeyValuePair<string, string>("yellow",  "Amarelo: ");
-            case 4: return new KeyValuePair<string, string>("blue",    "Azul:       ");
-            case 5: return new KeyValuePair<string, string>("green",   "Verde:    ");
+            case 2: return new KeyValuePair<string, string>("#FFA500", "Laranja:   ");
+            case 3: return new KeyValuePair<string, string>("yellow",  "Amarelo:  ");
+            case 4: return new KeyValuePair<string, string>("blue",    "Azul:        ");
+            case 5: return new KeyValuePair<string, string>("green",   "Verde:      ");
             default:
-               return new KeyValuePair<string, string>("white", "Branco:  ");
+               return new KeyValuePair<string, string>("white", "Branco:    ");
         } 
     }
     
