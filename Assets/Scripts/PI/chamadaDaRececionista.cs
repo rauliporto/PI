@@ -41,7 +41,7 @@ public class chamadaDaRececionista : MonoBehaviour
     public void insertTriagem() {
         pacienteAtual.GetComponent<movimentoPaciente>().moveTo("WaitingArea");
         InicializacaoVARS.filaTriagem.Enqueue(pacienteAtual);   
-        pacienteAtual.GetComponent<informacaoPaciente>().addTempoEsperaTriagem(); 
+        pacienteAtual.GetComponent<informacaoPaciente>().setTempoEsperaTriagem(); 
     }
 
     public void callPacient() {

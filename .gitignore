@@ -47,3 +47,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 Packages/manifest.json
+test.csv
+*.csv

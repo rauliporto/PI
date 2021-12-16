@@ -78,7 +78,7 @@ public sealed class Statistics : MonoBehaviour
 
         foreach (KeyValuePair<int, CountPatients> s in stats.OrderBy(key => key.Key))
         {   
-            total = System.Math.Round(((s.Value.getTotalTime()/10)/s.Value.getTotalPatients()), 2);     
+            total = System.Math.Round(((s.Value.getTotalTime())/s.Value.getTotalPatients()), 2);     
             times.text += "<color="+gravityToColor(s.Key).Key+">" + gravityToColor(s.Key).Value +"</color>" + total + "    " + s.Value.getTotalPatients().ToString() + "\n";
         }
     }

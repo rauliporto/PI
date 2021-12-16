@@ -24,7 +24,6 @@ public class movimentoPaciente : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<informacaoPaciente>().addTime();
         if(canIMove)
         {
             this.GetComponent<NavMeshAgent>().isStopped = false;
@@ -40,8 +39,7 @@ public class movimentoPaciente : MonoBehaviour
             called = true;
             if (pos == "Exit") {
                 updateStatistics();              
-                
-                GameObject.Destroy(this.gameObject);    
+                GameObject.Destroy(this.gameObject);
             }
         }
 
@@ -78,8 +76,9 @@ public class movimentoPaciente : MonoBehaviour
 
     public void updateStatistics() {
         print(" Aqui 1");
-        Statistics.Instance.setStatistics(GetComponent<informacaoPaciente>().getPulseira(), GetComponent<informacaoPaciente>().getTime());
-        Statistics.Instance.writeFileTotals(GetComponent<informacaoPaciente>().getPulseira(), GetComponent<informacaoPaciente>().getTime(), GetComponent<informacaoPaciente>().getExam());
+        float tempoFinal = Time.time - GetComponent<informacaoPaciente>().getTime();
+        Statistics.Instance.setStatistics(GetComponent<informacaoPaciente>().getPulseira(), tempoFinal);
+        Statistics.Instance.writeFileTotals(GetComponent<informacaoPaciente>().getPulseira(), tempoFinal, GetComponent<informacaoPaciente>().getExam());
     }
 
     public bool nearPosition()

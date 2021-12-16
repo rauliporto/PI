@@ -6,9 +6,8 @@ public class informacaoPaciente : MonoBehaviour
 {
     public int pulseira;
     public int senha;
-    public float tempo;
+    public float tempoEntrada;
     public bool fezExame;
-
     public float tempoEsperaTriagem;
     public float tempoEsperaMedico;
 
@@ -18,7 +17,7 @@ public class informacaoPaciente : MonoBehaviour
     {
         pulseira = 0;
         senha = 0;
-        tempo = 0;
+        tempoEntrada = Time.time;
         tempoEsperaTriagem = 0;
         tempoEsperaMedico = 0;
     }
@@ -37,28 +36,24 @@ public class informacaoPaciente : MonoBehaviour
         return senha;
     }
 
-    public void addTime(){
-        tempo +=Time.deltaTime;
-    }
-
     public float getTime(){
-        return tempo;
+        return tempoEntrada;
     }
 
-    public void addTempoEsperaTriagem(){
-        tempoEsperaTriagem +=Time.deltaTime;
+    public void setTempoEsperaTriagem(){
+        tempoEsperaTriagem = Time.time;
     }
 
     public float getTempoEsperaTriagem(){
         return tempoEsperaTriagem;
     }
 
-    public void addTempoEsperaMedico(){
-        tempoEsperaMedico +=Time.deltaTime;
+    public void setTempoEsperaMedico(){
+        tempoEsperaMedico = Time.time;
     }
 
     public float getTempoEsperaMedico(){
-        return tempoEsperaMedico;
+        return Time.time - tempoEsperaMedico;
     }
 
     public void setPulseira(int pulseira){
