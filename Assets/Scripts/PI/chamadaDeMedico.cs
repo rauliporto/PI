@@ -9,12 +9,12 @@ public class chamadaDeMedico : MonoBehaviour
     public int gravity;
 
     private readonly float sd = 20f;
-    private readonly float mean1 = 50f;
-    private readonly float mean2 = 45f;
-    private readonly float mean3 = 40f;
-    private readonly float mean4 = 35f;
-    private readonly float mean5 = 30f;
-    private readonly float mean6 = 25f;
+    private readonly float mean1 = 30f;
+    private readonly float mean2 = 25f;
+    private readonly float mean3 = 20f;
+    private readonly float mean4 = 15f;
+    private readonly float mean5 = 10f;
+    private readonly float mean6 = 5f;
  
 
     // Start is called before the first frame update
