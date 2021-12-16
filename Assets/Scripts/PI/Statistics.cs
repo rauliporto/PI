@@ -73,12 +73,13 @@ public sealed class Statistics : MonoBehaviour
         double total = 0;
         times.text = "";
         if(stats.Count != 0) 
-            times.text = "<b>Tempo de Espera Médio</b>\n";
+            times.text = "<b>Cores     Tempo   Quantidade</b>\n";
+
 
         foreach (KeyValuePair<int, CountPatients> s in stats.OrderBy(key => key.Key))
         {   
             total = System.Math.Round(((s.Value.getTotalTime()/10)/s.Value.getTotalPatients()), 2);     
-            times.text += "<color="+gravityToColor(s.Key).Key+">" + gravityToColor(s.Key).Value +"</color>" + total + "\n";
+            times.text += "<color="+gravityToColor(s.Key).Key+">" + gravityToColor(s.Key).Value +"</color>" + total + "    " + s.Value.getTotalPatients().ToString() + "\n";
         }
     }
 
