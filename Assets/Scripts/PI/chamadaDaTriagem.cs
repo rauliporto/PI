@@ -70,7 +70,7 @@ public class chamadaDaTriagem : MonoBehaviour
 
     
     public void addQueue(int gravity) {
-        pacienteAtual.GetComponent<informacaoPaciente>().addTempoEsperaMedico(); 
+        pacienteAtual.GetComponent<informacaoPaciente>().setTempoEsperaMedico(); 
 
         switch (gravity)
         {
@@ -90,7 +90,12 @@ public class chamadaDaTriagem : MonoBehaviour
     }
 
     public float exponential() {
-        return rate - mean * Mathf.Log(UnityEngine.Random.Range(0.0f, 1.0f));
+        float result = -1;
+        while (result < 0.0f || result > 20.0f)
+        {
+            result = rate - mean * Mathf.Log(UnityEngine.Random.Range(0.0f, 1.0f));
+        }
+        return result;
     }
 
     public int dirac()
@@ -105,6 +110,6 @@ public class chamadaDaTriagem : MonoBehaviour
     }  
 
     public void updateStatistics() {
-        Statistics.Instance.writeFileTriage(pacienteAtual.GetComponent<informacaoPaciente>().getTempoEsperaTriagem());
+        Statistics.Instance.writeFileTriage(Time.time - pacienteAtual.GetComponent<informacaoPaciente>().getTempoEsperaTriagem());
     }     
 }
